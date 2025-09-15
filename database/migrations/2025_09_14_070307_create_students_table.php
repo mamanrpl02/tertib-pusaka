@@ -17,21 +17,18 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
 
-            // ENUM untuk kelas
-            $table->enum('class_level', ['10', '11', '12']);
-            $table->enum('class_group', ['A', 'B', 'C', 'D']);
+            // ENUM untuk kelas (string, bukan integer)
+            $table->enum('class_level', ['10', '11', '12'])->default('10');
+            $table->enum('class_group', ['A', 'B', 'C', 'D'])->default('A');
 
             // ENUM untuk jurusan
-            $table->enum('major', ['RPL', 'TBSM', 'TKJ', 'AKL'])->default('RPL');
+            $table->enum('major', ['ATPH', 'APHP', 'TKRO', 'RPL', 'TBSM', 'TAB', 'TL'])->default('RPL');
 
-            // Akumulasi poin pelanggaran
             $table->integer('points')->default(0);
-
             $table->rememberToken();
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

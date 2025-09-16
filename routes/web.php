@@ -19,9 +19,10 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth:student'])->group(function () {
-    Route::get('/student/dashboard', function () {
-        return view('student.dashboard');
-    })->name('student.dashboard');
+    Route::view('/beranda', 'student.pages.beranda')->name('beranda');
+    Route::view('/top-student', 'student.pages.top-student')->name('top-student');
+    Route::view('/rules', 'student.pages.rules')->name('rules');
+    Route::view('/profile', 'student.pages.profile')->name('profile');
 });
 
 
